@@ -1,0 +1,73 @@
+21:27:20.390 [main] INFO  com.intuit.karate.Runner - using system property 'karate.options': --tags @debug
+21:27:21.236 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+21:27:22.389 [main] INFO  com.intuit.karate - karate.env system property was: null 
+21:27:22.402 [main] INFO  com.intuit.karate - >> lock acquired, begin callSingle: classpath:helpers/CreateToken.feature
+21:27:22.889 [main] DEBUG com.intuit.karate - request:
+1 > POST https://conduit-api.bondaracademy.com/api/users/login
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 56
+1 > Host: conduit-api.bondaracademy.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+1 > Accept-Encoding: gzip,deflate
+{"user":{"email":"anshika@gmail.com","password":"1234"}}
+
+21:27:23.725 [main] DEBUG com.intuit.karate - response time in milliseconds: 823
+1 < 200
+1 < x-powered-by: Express
+1 < access-control-allow-origin: https://conduit.bondaracademy.com
+1 < vary: Origin
+1 < content-type: application/json; charset=utf-8
+1 < etag: W/"125-13Zl+IN87g8B3Sj9jtrQ/EkQjgs"
+1 < X-Cloud-Trace-Context: d3882df1d34e1fcf3fc144798be678fc;o=1
+1 < Date: Mon, 19 Feb 2024 15:57:23 GMT
+1 < Server: Google Frontend
+1 < Content-Length: 293
+{"user":{"email":"anshika@gmail.com","username":"anshika","bio":null,"image":"https://api.realworld.io/images/smiley-cyrus.jpeg","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyODJ9LCJpYXQiOjE3MDgzNTgyNDMsImV4cCI6MTcxMzU0MjI0M30.2VzuAE501Pie08C9ZPEjI5M-SpMVPp4h9irS9apKXs0"}}
+
+21:27:23.756 [main] INFO  com.intuit.karate - << lock released, cached callSingle: classpath:helpers/CreateToken.feature
+21:27:24.012 [main] DEBUG com.intuit.karate - request:
+1 > POST https://conduit-api.bondaracademy.com/api/users
+1 > Authorization: Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyODJ9LCJpYXQiOjE3MDgzNTgyNDMsImV4cCI6MTcxMzU0MjI0M30.2VzuAE501Pie08C9ZPEjI5M-SpMVPp4h9irS9apKXs0
+1 > Content-Type: application/json; charset=UTF-8
+1 > Content-Length: 76
+1 > Host: conduit-api.bondaracademy.com
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+1 > Accept-Encoding: gzip,deflate
+{"user":{"email":"lyda36@test.com","password":"1234","username":"Anshika1"}}
+
+21:27:24.378 [main] DEBUG com.intuit.karate - response time in milliseconds: 363
+1 < 422
+1 < x-powered-by: Express
+1 < access-control-allow-origin: https://conduit.bondaracademy.com
+1 < vary: Origin
+1 < content-type: application/json; charset=utf-8
+1 < etag: W/"32-JsHJTKwNHW5NSVjFTl5ds7a++54"
+1 < X-Cloud-Trace-Context: 9f0861edf91a79acf40abe994498baf1
+1 < Date: Mon, 19 Feb 2024 15:57:24 GMT
+1 < Server: Google Frontend
+1 < Content-Length: 50
+{"errors":{"username":["has already been taken"]}}
+
+21:27:24.453 [main] ERROR com.intuit.karate - classpath:ConduitApp/feature/SignUp.feature:66
+And match response == "{"errors":{"username":["has already been taken"]}}"
+js failed:
+>>>>
+01: "{"errors":{"username":["has already been taken"]}}"
+<<<<
+org.graalvm.polyglot.PolyglotException: SyntaxError: Unnamed:1:3 Expected ; but found errors
+"{"errors":{"username":["has already been taken"]}}"
+   ^
+
+- org.graalvm.polyglot.Context.eval(Context.java:425)
+- com.intuit.karate.graal.JsEngine.evalForValue(JsEngine.java:169)
+- com.intuit.karate.graal.JsEngine.eval(JsEngine.java:165)
+- com.intuit.karate.core.ScenarioEngine.evalJs(ScenarioEngine.java:1286)
+- com.intuit.karate.core.ScenarioEngine.evalKarateExpression(ScenarioEngine.java:2238)
+- com.intuit.karate.core.ScenarioEngine.match(ScenarioEngine.java:1841)
+- com.intuit.karate.core.ScenarioEngine.matchResult(ScenarioEngine.java:182)
+
+classpath:ConduitApp/feature/SignUp.feature:66
+21:27:25.462 [main] INFO  com.intuit.karate.Suite - <<fail>> feature 3 of 3 (0 remaining) classpath:ConduitApp/feature/SignUp.feature
+21:27:25.466 [main] DEBUG com.intuit.karate.Suite - waiting for 3 features to complete
